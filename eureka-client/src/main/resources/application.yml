@@ -1,0 +1,24 @@
+server:
+  port: 8020
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8010/eureka/
+
+mybatis:
+  type-aliases-package: com.bowensun.domain
+  mapper-locations: classpath:mapper/*.xml
+
+spring:
+  application:
+    name: client
+  # 数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/film?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&autoReconnectForPools=true&failOverReadOnly=false&useSSL=true
+      username: root
+      password: 285413
+      #driver-class-name: oracle.jdbc.OracleDriver
+      driver-class-name: com.mysql.jdbc.Driver
