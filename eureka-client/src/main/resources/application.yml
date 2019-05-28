@@ -5,6 +5,16 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8010/eureka/
+    #是否从服务注册中心获取可用的服务清单，默认为true
+    fetch-registry: true
+    # 是否注册到eureka中
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    #多少秒内没有发送心跳，则剔除服务列表
+    lease-expiration-duration-in-seconds: 90
+    #每隔多少秒向服务端发送心跳
+    lease-renewal-interval-in-seconds: 3
 
 mybatis:
   type-aliases-package: com.bowensun.domain

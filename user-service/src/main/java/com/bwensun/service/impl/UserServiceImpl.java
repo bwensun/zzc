@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
+import static org.mybatis.dynamic.sql.SqlBuilder.*;
 
 /**
  * @author 郑建雄
@@ -38,4 +38,33 @@ public class UserServiceImpl implements UserService {
                 .build().render(RenderingStrategy.MYBATIS3));*/
         return userMapper.selectByExample().build().execute();
     }
+
+    @Override
+    public void userAdd(USER user) {
+        userMapper.insertSelective(user);
+    }
+
+    @Override
+    public USER selectById(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public USER select(Integer id, String name) {
+        return userMapper.selectOne(SqlBuilder.select(
+                USERDynamicSqlSupport.username,
+                USERDynamicSqlSupport.password,
+                USERDynamicSqlSupport.salt,
+                USERDynamicSqlSupport.state)
+                .from(USERDynamicSqlSupport.USER)
+                .where(USERDynamicSqlSupport.uid, isEqualTo(id), or(USERDynamicSqlSupport.name, isLike(name)))
+                .build().render(RenderingStrategy.MYBATIS3)
+        );
+    }
+
+    @Override
+    public USER select3(USER user) {
+        return null;
+    }
+
 }

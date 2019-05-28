@@ -4,6 +4,7 @@ import com.bwensun.domain.USER;
 import com.bwensun.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,9 +24,35 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("test")
+    @RequestMapping("test")
     public List<USER> getUserList(){
         System.out.println("=================");
         return userService.findList();
+    }
+
+    @PostMapping("add")
+    public void userAdd(USER user){
+
+        System.out.println("=================>进入userController");
+        System.out.println(user.getName());
+        userService.userAdd(user);
+    }
+
+    @RequestMapping("select")
+    public USER userSelect(Integer id){
+        System.out.println("=================>进入userController");
+        return userService.selectById(id);
+    }
+
+    @RequestMapping("select2")
+    public USER userSelect(Integer uid, String name){
+        System.out.println("=================>进入userController");
+        return userService.select(uid, name);
+    }
+
+    @RequestMapping("select3")
+    public USER userSelect(USER user){
+        System.out.println("=================>进入userController");
+        return userService.select3(user);
     }
 }

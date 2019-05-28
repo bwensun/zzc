@@ -40,7 +40,7 @@
     </root>
 
     <!-- logback为java中的包 -->
-    <logger name="com.bowensun.film.repository" level="debug" additivity="false">
+    <logger name="com.bwensun.repository" level="debug" additivity="false">
         <appender-ref ref="console"/>
     </logger>
 </configuration>

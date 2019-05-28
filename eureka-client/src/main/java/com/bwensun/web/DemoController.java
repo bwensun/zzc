@@ -4,9 +4,7 @@ import com.bwensun.domain.USER;
 import com.bwensun.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,7 +34,28 @@ public class DemoController {
     }
 
     @GetMapping("feign/userList")
-    public String getUserList(USER user){
+    public List<USER> getUserList(USER user){
+        System.out.println("==================>");
         return userService.getUserList();
+    }
+
+    @PostMapping("feign/userAdd")
+    public String userAdd(USER user){
+        System.out.println("==================>");
+        System.out.println(user.getName());
+        userService.userAdd(user);
+        return "success";
+    }
+
+    @GetMapping("feign/select")
+    public USER userAdd(Integer uid){
+        System.out.println("==================>");
+        return userService.selectById(uid);
+    }
+
+    @GetMapping("feign/select2")
+    public USER select(Integer uid, String name){
+        System.out.println("==================>");
+        return userService.select2(uid, name);
     }
 }

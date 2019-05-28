@@ -7,9 +7,19 @@ spring:
 #eureka设置
 eureka:
   instance:
+    prefer-ip-address: true
     hostname: localhost
+    #多少秒内没有发送心跳，则剔除服务列表
+    lease-expiration-duration-in-seconds: 90
+    #每隔多少秒向服务端发送心跳
+    lease-renewal-interval-in-seconds: 10
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false         #开关自我保护模式
+    eviction-interval-timer-in-ms: 90000
+
+

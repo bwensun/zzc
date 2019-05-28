@@ -13,4 +13,12 @@ import java.util.List;
 public interface UserService {
 
     List<USER> findList();
+
+    void userAdd(USER user);
+
+    USER selectById(Integer id);
+
+    USER select(Integer id, String name);
+
+    USER select3(USER user);
 }
