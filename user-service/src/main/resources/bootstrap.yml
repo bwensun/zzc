@@ -1,0 +1,9 @@
+############### bootstrap中填写和spingcloud相关信息 ##############################
+
+spring:
+  cloud:
+    config:
+      name: user-service
+      profile: dev
+      uri: http://localhost:8011
+      label: master

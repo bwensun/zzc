@@ -1,0 +1,30 @@
+server:
+  port: 8011
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8010/eureka/
+
+spring:
+  application:
+    name: config
+#  profiles:
+#    active: native #配置上会在本地resource文件夹读取配置
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/bwensun/SpringCloudConfig.git
+          search-paths: zzc
+          username:
+          passphrase:
+          # 启动时验证仓库
+          clone-on-start: true
+        default-label: master
+#logging:
+#  level:
+#    org.springframework.cloud: debug
+#    org.springframework.cloud: debug
+

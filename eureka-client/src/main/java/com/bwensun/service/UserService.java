@@ -2,7 +2,6 @@ package com.bwensun.service;
 
 import com.bwensun.domain.USER;
 import feign.hystrix.FallbackFactory;
-import org.apache.catalina.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

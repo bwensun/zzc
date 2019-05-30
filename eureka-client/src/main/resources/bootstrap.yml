@@ -1,0 +1,8 @@
+############### bootstrap中填写和spingcloud相关信息 ##############################
+spring:
+  cloud:
+    config:
+      name: client  # 指定配置中心的服务名
+      profile: dev  # profile对应config server所获取的配置文件中的{profile}
+      uri: http://localhost:8011/
+      label: master # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
