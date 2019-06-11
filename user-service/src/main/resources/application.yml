@@ -3,3 +3,9 @@ server:
 spring:
   application:
     name: user-service #对应Config Server所获取的配置文件中的{application}
+# 暴露Endpoint
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

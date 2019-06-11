@@ -3,7 +3,7 @@
 spring:
   cloud:
     config:
-      name: user-service
+      name: user-service2
       profile: dev
       uri: http://localhost:8011
       label: master
